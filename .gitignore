@@ -144,12 +144,3 @@ dmypy.json
 .history/
 
 .mypy_cache
-
-# other
-ya_templates/
-
-htmlcov/
-.coverage
-.coverage.*
-coverage.xml
-*.cover
