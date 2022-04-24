@@ -2,8 +2,8 @@ from django.shortcuts import render, get_object_or_404
 # Импортируем модель, чтобы обратиться к ней
 from .models import Post, Group
 
-def index(request):
 
+def index(request):
 
     posts = Post.objects.order_by('-pub_date')[:10]
     # В словаре context отправляем информацию в шаблон
