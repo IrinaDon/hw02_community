@@ -1,13 +1,35 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% load static %}
+<head>
 {% block title %}Записи сообщества {{ group }} | Yatube{% endblock %}
-{% block header %}Записи сообщества {{ group }} | Yatube{% endblock %}
+{% endblock %}
+</head>
 {% block content %}
-    <h1>{{ group }}</h1>
-    <p>{{ group.description }}</p>
-    {% for post in posts %}
-    <h3>Автор: {{ post.author.get_full_name }}, Дата публикации: {{ post.pub_date|date:"d M Y" }}</h3>
-    <p>{{ post.text|linebreaksbr }}</p>
-    {% if not forloop.last %}<hr>{% endif %}
-    {% endfor %}
+  <!-- класс py-5 создает отступы сверху и снизу блока -->
+  <div class="container py-5">
+    <h1>{{ text }}</h1>
+    <p>
+      {{ post.group }}
+    </p>
+    <article>
+      {% for post in posts %}
+      <ul>
+        <li>
+          Автор: {{ post.author.get_full_name }}
+        </li>
+        <li>
+          {% language 'ru' %}
+          Дата публикации: {{ post.pub_date|date:'d E Y' }}
+          {% endlanguage %}
+        </li>
+      </ul>
+      <p>
+       {{ post.text }}
+      </p>
 
+      {% if not forloop.last %}<hr>{% endif %}
+    {% endfor %}
+    </article>
+    <!-- под последним постом нет линии -->
+  </div>
 {% endblock %}

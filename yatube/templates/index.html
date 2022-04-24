@@ -1,14 +1,36 @@
-{% extends "base.html" %}
-{% block title %}Последние обновления на сайте{% endblock %}
-{% block header %}Последние обновления на сайте{% endblock %}
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+<head>
+  <link rel='stylesheet' href='{% static 'css/bootstrap.min.css' %}'>
+  {% block title %}
+<title>{{ title }} </title>
+{% endblock %}
+</head>
 {% block content %}
-
+<!-- класс py-5 создает отступы сверху и снизу блока -->
+<div class="container py-5">
+  <h1>{{ text }}</h1>
+  <article>
     {% for post in posts %}
-    <h3>
-        Автор: {{ post.author.get_full_name }}, Дата публикации: {{ post.pub_date|date:"d M Y" }}
-    </h3>
-    <p>{{ post.text|linebreaksbr }}</p>
-    {% if not forloop.last %}<hr>{% endif %}
+      <ul>
+        <li>
+          Автор: {{ post.author.get_full_name }}
+        </li>
+        <li>
+          {% language 'ru' %}
+          Дата публикации: {{ post.pub_date|date:"d E Y" }}
+          {% endlanguage %}
+        </li>
+      </ul>
+      <p>
+       {{ post.text }}
+      </p>
+      {% if post.group %}
+        <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
+      {% endif %}
+      {% if not forloop.last %}<hr>{% endif %}
     {% endfor %}
-
+  </article>
+</div>
 {% endblock %}
