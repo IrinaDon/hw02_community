@@ -8,7 +8,10 @@
 {% block content %}
   <!-- класс py-5 создает отступы сверху и снизу блока -->
 <div class="container py-5">
-  <h1>{{ Это главная страница Yatube }}</h1>
+  <h1> Лев Толстой – зеркало русской революции </h1>
+  <p>
+    Группа тайных поклонников графа.
+  </p>
   <article>
     {% for post in posts %}
       <ul>
@@ -17,9 +20,8 @@
         </li>
         <li>
           Дата публикации: {{ post.pub_date|date:"d E Y" }}
-          {% endlanguage %}
-        </li>
-      </ul>
+        <li>
+        </ul>
       <p>
        {{ post.text }}
       </p>
