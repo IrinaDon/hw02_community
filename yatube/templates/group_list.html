@@ -1,34 +1,30 @@
 {% extends 'base.html' %}
 {% load static %}
-<head>
 {% block title %}Записи сообщества {{ group }} | Yatube{% endblock %}
 </head>
 {% block content %}
   <!-- класс py-5 создает отступы сверху и снизу блока -->
   <div class="container py-5">
-    <h1>{{ text }}</h1>
+    <h1> Лев Толстой – зеркало русской революции</h1>
     <p>
-      {{ post.group }}
+      Группа тайных поклонников графа.
     </p>
+    {% for post in posts %}
     <article>
-      {% for post in posts %}
       <ul>
         <li>
           Автор: {{ post.author.get_full_name }}
         </li>
         <li>
-          {% language 'ru' %}
           Дата публикации: {{ post.pub_date|date:'d E Y' }}
-          {% endlanguage %}
         </li>
       </ul>
       <p>
-       {{ post.text }}
+       {{ post.text|linebreaks }}
       </p>
-
+    </article>
       {% if not forloop.last %}<hr>{% endif %}
     {% endfor %}
-    </article>
     <!-- под последним постом нет линии -->
   </div>
 {% endblock %}

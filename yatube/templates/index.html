@@ -1,16 +1,13 @@
 {% extends 'base.html' %}
-{% load static %}
-{% load i18n %}
 <head>
   <link rel='stylesheet' href='{% static 'css/bootstrap.min.css' %}'>
   {% block title %}
 <title>{{ title }} </title>
 {% endblock %}
-</head>
 {% block content %}
-<!-- класс py-5 создает отступы сверху и снизу блока -->
+  <!-- класс py-5 создает отступы сверху и снизу блока -->
 <div class="container py-5">
-  <h1>{{ text }}</h1>
+  <h1>{{ Это главная страница Yatube }}</h1>
   <article>
     {% for post in posts %}
       <ul>
@@ -18,7 +15,6 @@
           Автор: {{ post.author.get_full_name }}
         </li>
         <li>
-          {% language 'ru' %}
           Дата публикации: {{ post.pub_date|date:"d E Y" }}
           {% endlanguage %}
         </li>
