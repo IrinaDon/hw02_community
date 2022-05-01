@@ -23,7 +23,7 @@ class Post(models.Model):
 
 class Group(models.Model):
     title = models.CharField(max_length=200)
-    slug = models.SlugField(unique=True, verbose_name="URL")
+    slug = models.SlugField(unique=True, verbose_name='URL')
     description = models.TextField()
 
     def __str__(self) -> str:
