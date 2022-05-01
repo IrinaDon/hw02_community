@@ -4,6 +4,7 @@ from .models import Post, Group
 
 POSTS_PER_PAGE = 10
 
+
 def index(request):
     posts = Post.objects.all()[:POSTS_PER_PAGE]
     context = {
